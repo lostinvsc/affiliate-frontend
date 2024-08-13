@@ -12,7 +12,7 @@ const Shop = () => {
     const [list, setList] = useState([]);
 
     const getlist = async () => {
-        let res = await axios.get('http://localhost:3000/getlist')
+        let res = await axios.get('https://affiliate-back-x12u.onrender.com/getlist')
 
         // console.log(res.data)
         setList(res.data)

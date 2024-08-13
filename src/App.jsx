@@ -42,7 +42,7 @@ element:<>  <Navbar/><Shop/></>
   
 
   const getlist = async () => {
-      let res = await axios.get('http://localhost:3000/getlist')
+      let res = await axios.get('https://affiliate-back-x12u.onrender.com/getlist')
       setList(res.data)
   }
 
