@@ -30,7 +30,7 @@ const Women = () => {
 
   return (
     <div id='ghead' className=' mx-auto flex flex-col items-center '>
-    <img id='banner' className='w-[100%] ' src="/banner.png" alt="" />
+    <img id='banner' className='w-[100%] ' src="/banner.jpg" alt="" />
 
 
     <div id='gproducts' className="main flex flex-wrap w-[100%] mx-auto justify-between mt-[4vw] mb-[100px] ">

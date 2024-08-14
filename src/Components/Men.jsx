@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef, useContext } from 'react'
 import Footer from './Footer.jsx'
 import Item from '../Cards/Item.jsx'
 import '../Css/Gender.css'
-import axios from 'axios';
 import Context from '../Context/Context.js';
 const Men = () => {
 
@@ -22,7 +21,7 @@ const Men = () => {
 
     return (
         <div id='ghead' className=' mx-auto flex flex-col items-center '>
-            <img id='banner' className='w-[100%] menbanner' src="/banner.png" alt="" />
+            <img id='banner' className='w-[100%] menbanner' src="/menbanner.jpg" alt="" />
 
             <div id='gproducts' className="main flex flex-wrap w-[100%] mx-auto justify-between mt-[4vw] mb-[100px] ">
                 {
