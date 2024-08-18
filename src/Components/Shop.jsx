@@ -1,29 +1,24 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import Item from '../Cards/Item';
 import Footer from './Footer.jsx'
 import '../Css/Shop.css'
-import axios from 'axios';
-
+import Context from '../Context/Context.js';
 const Shop = () => {
-
+    const value = useContext(Context)
     const [email, setEmail] = useState('')
     const [new_collections, setNew_collections] = useState([])
     const [data_product, setData_product] = useState([])
     const [list, setList] = useState([]);
 
     const getlist = async () => {
-        let res = await axios.get('https://affiliate-back-x12u.onrender.com/getlist')
-
-        // console.log(res.data)
-        setList(res.data)
-
+        setList(value.list)
     }
 
     useEffect(() => {
         getlist()
-    }, [])
+    },[value.list])
 
-    const point=useRef()
+    const point = useRef()
 
     useEffect(() => {
 
@@ -32,17 +27,19 @@ const Shop = () => {
             setNew_collections(newc)
             let data_p = list.filter((e) => e.tag[1] == "famous" || e.tag[2] == "famous")
             setData_product(data_p)
-            
+
         }
 
     }, [list])
 
-    
+
 
     return (
         <div id='head' className='flex flex-col'>
-            <div id='page1' className='page1 bg-gradient-to-t from-white to-purple-400 flex justify-between pl-[8vw] pr-[2vw] pt-[3vw] relative'>
+            <div id='page1' className='page1 bg-gradient-to-t from-white to-purple-400 flex justify-between pl-[8vw] pr-[2vw] pt-[2vw] relative'>
+
                 <div className=' border-red-600 pt-[14vw] ' >
+
                     <h6 className='text-[1.4vw] font-sans '>NEW ARRIVALS ONLY</h6>
                     <div className='text-[5.5vw] font-semibold font-mono relative z-20'>
                         <h1 className='flex items-center'>new <img className='w-[5.5vw]' src="../Frontend_Assets/hand_icon.png" alt="" /></h1>
@@ -68,7 +65,7 @@ const Shop = () => {
 
                     <div id='citem' className='flex justify-between w-[100%] mt-[5vw]'>
 
-                        {  data_product.length>0 &&
+                        {data_product.length > 0 &&
                             data_product.map((value, index) => {
                                 return (
 
@@ -90,7 +87,7 @@ const Shop = () => {
                     <div id='citem' className='flex flex-wrap justify-between w-[100%] mt-[5vw]'>
 
                         {
-                            new_collections.length>0 &&
+                            new_collections.length > 0 &&
                             new_collections.map((value, index) => {
                                 return (
 
@@ -107,11 +104,15 @@ const Shop = () => {
                     <p className='text-[1.7rem]  my-[30px]'>Subscribe to our newsletter and stay updated</p>
 
                     <div id='subsdiv' className='rounded-full w-[50rem] flex justify-center text-[2rem] font-light border border-gray-600'>
-                        <input id='subsin' onChange={(e)=>{setEmail(e.target.value)}} value={email} placeholder='your email id' className='w-[40rem] rounded-l-full pl-[15px] outline-none text-[1.6rem] bg-transparent' type="email" />
-                        <span id='subsspan' ref={point} onClick={()=>{if(email.includes('@')&&(email.includes('.com'))){point.current.style.cursor='progress' ;setTimeout(() => {
-                            setEmail('')
-                            point.current.style.cursor=''
-                        }, 900);}}}  className='rounded-full cursor-pointer px-[20px] py-[10px] bg-black text-white'>Subscribe</span>
+                        <input id='subsin' onChange={(e) => { setEmail(e.target.value) }} value={email} placeholder='your email id' className='w-[40rem] rounded-l-full pl-[15px] outline-none text-[1.6rem] bg-transparent' type="email" />
+                        <span id='subsspan' ref={point} onClick={() => {
+                            if (email.includes('@') && (email.includes('.com'))) {
+                                point.current.style.cursor = 'progress'; setTimeout(() => {
+                                    setEmail('')
+                                    point.current.style.cursor = ''
+                                }, 900);
+                            }
+                        }} className='rounded-full cursor-pointer px-[20px] py-[10px] bg-black text-white'>Subscribe</span>
                     </div>
 
 

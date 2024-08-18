@@ -5,6 +5,12 @@
     display:none;
 }
 
+#search{
+    width: min(700px,80vw);
+}
+
+
+
 @media (max-width:888px) {
     #navbar{
         padding: 0.5rem 10px;
@@ -23,6 +29,12 @@
     #dropmenu{
         display:inline-block;
     }
+
+#search{
+    margin: 21px 0px 35px 0px;
+}
+
+
 }
 @media (max-width:472px) {
 

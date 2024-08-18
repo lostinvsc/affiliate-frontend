@@ -3,11 +3,11 @@ import Context from '../Context/Context.js'
 import { useContext, useState, useEffect, useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import Cookies from 'js-cookie'
+
 import '../Css/Navbar.css'
 import { AiOutlineMenuFold } from "react-icons/ai";
 import { AiOutlineMenuUnfold } from "react-icons/ai";
-import { BsMinecartLoaded } from "react-icons/bs";
+
 
 const Navbar = () => {
     const [toggle, setToggle] = useState(false)
@@ -18,6 +18,10 @@ const Navbar = () => {
 
     let ref = useRef()
 
+    const getlist = async () => {
+        let res = await axios.get('https://affiliate-back-x12u.onrender.com/getlist')
+        value.setList(res.data)
+    }
 
     function changedd() {
         if (dropdown == false) {
@@ -27,8 +31,10 @@ const Navbar = () => {
         }
     }
 
+    useEffect(() => {
+      getlist()
+    }, [])
     
-
     return (
         <nav id='navbar' className=' relative flex justify-between items-center py-[1rem] border pl-[5vw] pr-[10vw]'>
             <div id='shopper' onClick={()=>{navigate('/')}} className='flex items-center cursor-pointer '>

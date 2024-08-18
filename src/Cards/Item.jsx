@@ -5,7 +5,7 @@ const Item = ({ value }) => {
 
     return (
         <a id='item' target='_blank' ref={ref} href={value.link} className='w-[24rem] border border-black p-[10px] rounded-lg cursor-pointer text-[1.3rem] hover:scale-[1.05] transition-scale duration-300 mb-[30px]'>
-            <div className="image">
+            <div className="w-full image">
                 <img className='w-[100%] rounded-md' src={value.image} alt="" />
             </div>
             <p className='my-[10px]'>

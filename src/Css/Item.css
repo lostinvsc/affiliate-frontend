@@ -1,3 +1,8 @@
+/* #item .image img{
+width:24rem;
+aspect-ratio: 1/1;
+object-fit: cover;
+} */
 @media (max-width:1030px) {
     #item{
         width:20vw;

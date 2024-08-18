@@ -9,8 +9,6 @@ import Tech from './Components/Tech.jsx'
 import Shop from './Components/Shop.jsx'
 import Accessories from './Components/Accessories.jsx'
 
-import axios, { all } from 'axios';
-
 const App = () => {
   const router=createBrowserRouter([
     {
@@ -40,21 +38,9 @@ element:<>  <Navbar/><Shop/></>
 
   const [list, setList] = useState([]);
   
-
-  const getlist = async () => {
-      let res = await axios.get('https://affiliate-back-x12u.onrender.com/getlist')
-      setList(res.data)
-  }
-
-  useEffect(() => {
-    getlist()
-  }, [])
-  
-  
-
   return (
 
- <Context.Provider value={{list}} >
+ <Context.Provider value={{list:list, setList:setList}} >
 
         <RouterProvider router={router} />
         
